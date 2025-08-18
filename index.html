@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavithra Mohan | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .section-title {
+            @apply text-3xl font-bold text-gray-800 mb-2;
+        }
+        .section-subtitle {
+            @apply text-lg text-gray-500 mb-8;
+        }
+        .card {
+            @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-t-4 border-transparent hover:border-indigo-500;
+        }
+        .card:hover {
+             box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.2), 0 10px 10px -5px rgba(79, 70, 229, 0.1);
+        }
+        .skill-card {
+            @apply bg-white p-6 rounded-lg shadow-md flex items-center space-x-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-indigo-50;
+        }
+        /* Scroll Animations */
+        .reveal {
+            position: relative;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 1s all ease;
+        }
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        /* Typing Animation */
+        .typing-cursor {
+            border-right: .15em solid white; /* Cursor color */
+            animation: blink-caret .75s step-end infinite;
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-700">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800">Pavithra Mohan</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#about" class="text-gray-600 hover:text-indigo-600">About</a>
+                <a href="#experience" class="text-gray-600 hover:text-indigo-600">Experience</a>
+                <a href="#projects" class="text-gray-600 hover:text-indigo-600">Projects</a>
+                <a href="#publications" class="text-gray-600 hover:text-indigo-600">Publications</a>
+                <a href="#contact" class="bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700 transition-colors">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-800 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-4 text-sm hover:bg-gray-100">About</a>
+            <a href="#experience" class="block py-2 px-4 text-sm hover:bg-gray-100">Experience</a>
+            <a href="#projects" class="block py-2 px-4 text-sm hover:bg-gray-100">Projects</a>
+            <a href="#publications" class="block py-2 px-4 text-sm hover:bg-gray-100">Publications</a>
+            <a href="#contact" class="block py-2 px-4 text-sm hover:bg-gray-100">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg py-24 text-white">
+            <div class="container mx-auto px-6 text-center">
+                <img src="https://placehold.co/150x150/ffffff/4f46e5?text=PM" alt="Pavithra Mohan" class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-white/50 shadow-lg">
+                <h1 class="text-5xl font-bold mb-3">Pavithra Mohan</h1>
+                <p id="typing-subtitle" class="text-xl opacity-90 mb-8 h-7"></p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#contact" class="bg-white text-indigo-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors w-full sm:w-auto">Get In Touch</a>
+                    <!-- Add the link to your resume PDF here -->
+                    <a href="#" class="bg-transparent text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-white/20 border border-white/80 transition-colors w-full sm:w-auto">Download Resume</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="section-title text-center">About Me</h2>
+                <p class="section-subtitle text-center max-w-3xl mx-auto">A passionate student with a knack for building beautiful and functional web experiences.</p>
+                <div class="max-w-4xl mx-auto text-center leading-relaxed">
+                    <p>I am a motivated Computer Science student with a solid foundation in **full-stack development**. My journey in tech is driven by a passion for creating responsive, user-friendly interfaces and robust backend systems. I have hands-on experience through multiple capstone projects, published research in Generative AI, and leadership roles in technical and creative clubs. I'm always eager to learn new technologies and apply my skills to solve challenging problems in a dynamic work environment.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="reveal">
+                    <h2 class="section-title text-center">My Skills</h2>
+                    <p class="section-subtitle text-center">Technologies and tools I work with.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+                    <div class="skill-card reveal"><i class="fab fa-python text-3xl text-indigo-500"></i><div><h3 class="font-semibold">Python</h3><p class="text-sm text-gray-500">Data Analysis, AI</p></div></div>
+                    <div class="skill-card reveal"><i class="fab fa-js-square text-3xl text-yellow-500"></i><div><h3 class="font-semibold">JavaScript</h3><p class="text-sm text-gray-500">Web Development</p></div></div>
+                    <div class="skill-card reveal"><i class="fab fa-html5 text-3xl text-orange-500"></i><div><h3 class="font-semibold">HTML5</h3><p class="text-sm text-gray-500">Web Structure</p></div></div>
+                    <div class="skill-card reveal"><i class="fab fa-css3-alt text-3xl text-blue-600"></i><div><h3 class="font-semibold">CSS3</h3><p class="text-sm text-gray-500">Styling</p></div></div>
+                    <div class="skill-card reveal"><i class="fab fa-node-js text-3xl text-green-500"></i><div><h3 class="font-semibold">Node.js</h3><p class="text-sm text-gray-500">Backend</p></div></div>
+                    <div class="skill-card reveal"><i class="fas fa-server text-3xl text-gray-600"></i><div><h3 class="font-semibold">Express.js</h3><p class="text-sm text-gray-500">API Development</p></div></div>
+                    <div class="skill-card reveal"><i class="fas fa-database text-3xl text-green-700"></i><div><h3 class="font-semibold">MongoDB</h3><p class="text-sm text-gray-500">NoSQL Database</p></div></div>
+                    <div class="skill-card reveal"><i class="fab fa-android text-3xl text-green-500"></i><div><h3 class="font-semibold">Android</h3><p class="text-sm text-gray-500">Mobile Dev</p></div></div>
+                    <div class="skill-card reveal"><i class="fas fa-cube text-3xl text-gray-700"></i><div><h3 class="font-semibold">Blender</h3><p class="text-sm text-gray-500">3D Modeling</p></div></div>
+                    <div class="skill-card reveal"><i class="fab fa-unity text-3xl text-black"></i><div><h3 class="font-semibold">Unity</h3><p class="text-sm text-gray-500">Game Dev</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20">
+            <div class="container mx-auto px-6">
+                 <div class="reveal">
+                    <h2 class="section-title text-center">Experience & Leadership</h2>
+                    <p class="section-subtitle text-center">My journey and roles so far.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card reveal">
+                        <div class="p-6">
+                            <i class="fas fa-microscope text-3xl text-indigo-600 mb-4"></i>
+                            <h3 class="font-bold text-xl mb-2">Researcher - Generative AI</h3>
+                            <p class="text-gray-600 mb-4">Amrita Vishwa Vidyapeetham</p>
+                            <p>Conducting research on applying Generative AI in healthcare. Presented four papers at national and international conferences.</p>
+                        </div>
+                    </div>
+                    <div class="card reveal">
+                        <div class="p-6">
+                            <i class="fas fa-magic text-3xl text-purple-600 mb-4"></i>
+                            <h3 class="font-bold text-xl mb-2">VFX Manager - Amigos Club</h3>
+                            <p class="text-gray-600 mb-4">Amrita Vishwa Vidyapeetham</p>
+                            <p>Managed creative projects, hosted a campus map design event, and organized a VR/AR gaming stall to boost student engagement.</p>
+                        </div>
+                    </div>
+                    <div class="card reveal">
+                        <div class="p-6">
+                            <i class="fab fa-ted text-3xl text-red-600 mb-4"></i>
+                            <h3 class="font-bold text-xl mb-2">Design & Production - TEDx Club</h3>
+                            <p class="text-gray-600 mb-4">Amrita Vishwa Vidyapeetham</p>
+                            <p>Part of the team responsible for designing event branding, merchandise, and supporting the visual identity of TEDx events.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="reveal">
+                    <h2 class="section-title text-center">My Projects</h2>
+                    <p class="section-subtitle text-center">A selection of my live applications.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card reveal">
+                        <img src="https://placehold.co/600x400/6366f1/ffffff?text=Amrita+Job+Portal" alt="Amrita Job Portal">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2">Amrita Job Portal</h3>
+                            <p class="text-gray-600 mb-4">A full-stack job portal application designed for students and alumni of Amrita University.</p>
+                            <a href="https://amritajobportal.vercel.app/" target="_blank" class="font-semibold text-indigo-600 hover:underline">View Live Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="card reveal">
+                         <img src="https://placehold.co/600x400/8b5cf6/ffffff?text=ADHD+Game" alt="ADHD Game">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2">ADHD-Focused Game</h3>
+                            <p class="text-gray-600 mb-4">An interactive web-based game designed to be engaging and accessible for individuals with ADHD.</p>
+                             <a href="https://adhd-game-eosin.vercel.app/" target="_blank" class="font-semibold text-indigo-600 hover:underline">View Live Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                     <div class="card reveal">
+                        <img src="https://placehold.co/600x400/ec4899/ffffff?text=ML+Game" alt="ML Game">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2">Machine Learning Game</h3>
+                            <p class="text-gray-600 mb-4">A web game that incorporates machine learning concepts, providing an interactive learning experience.</p>
+                            <a href="https://ml-game-tau.vercel.app/" target="_blank" class="font-semibold text-indigo-600 hover:underline">View Live Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                     <div class="card reveal">
+                        <img src="https://placehold.co/600x400/f59e0b/ffffff?text=ML+Capstone" alt="ML Capstone">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2">ML Capstone Project</h3>
+                            <p class="text-gray-600 mb-4">A comprehensive capstone project demonstrating the application of machine learning models.</p>
+                            <a href="https://ml-capstone.vercel.app/" target="_blank" class="font-semibold text-indigo-600 hover:underline">View Live Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="card reveal">
+                        <img src="https://placehold.co/600x400/10b981/ffffff?text=PFL+Project" alt="PFL Project">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2">PFL Web Application</h3>
+                            <p class="text-gray-600 mb-4">A web application developed as part of the Programming Foundations Lab coursework.</p>
+                            <a href="https://pfl-project-20-38-46-7fpe.vercel.app/" target="_blank" class="font-semibold text-indigo-600 hover:underline">View Live Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="py-20">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-indigo-500 reveal">
+                    <div class="reveal">
+                        <h2 class="section-title text-center">Publications</h2>
+                        <p class="section-subtitle text-center">My contribution to research.</p>
+                    </div>
+                    <h3 class="font-bold text-xl text-gray-800">Revolutionizing Medical Data Generation: Evaluating the Performance of Generative AI Models in Producing Realistic and Diverse Clinical Data</h3>
+                    <p class="text-sm italic text-gray-600 my-2">Pavithra Mohan, Parvathy S., Umamageswaran V.</p>
+                    <p class="mb-4">Published as a book chapter by <strong>Taylor & Francis (CRC Press)</strong>. This research evaluates Generative AI models for their effectiveness in creating realistic and diverse synthetic clinical data.</p>
+                    <a href="https://www.taylorfrancis.com/chapters/edit/10.1201/9781003641551-15/revolutionizing-medical-data-generation-evaluating-performance-generative-ai-models-producing-realistic-diverse-clinical-data-pavithra-parvathy-umamageswaran" target="_blank" class="font-semibold text-indigo-600 hover:underline">Read Publication <i class="fas fa-external-link-alt ml-1"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-800 text-white">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="text-3xl font-bold mb-4 text-center">Let's Connect</h2>
+                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto text-center">I'm currently seeking new opportunities. Have a question or want to work together? Drop a message below.</p>
+                
+                <form id="contact-form" class="max-w-xl mx-auto">
+                    <div id="form-status" class="mb-4 text-center h-6"></div>
+                    <div class="mb-4">
+                        <label for="name" class="block mb-2">Full Name</label>
+                        <input type="text" id="name" name="name" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:border-indigo-500 focus:outline-none" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block mb-2">Email Address</label>
+                        <input type="email" id="email" name="email" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:border-indigo-500 focus:outline-none" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block mb-2">Message</label>
+                        <textarea id="message" name="message" rows="4" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:border-indigo-500 focus:outline-none" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" id="submit-btn" class="bg-indigo-600 text-white px-10 py-3 rounded-full text-lg font-semibold hover:bg-indigo-700 transition-colors w-full sm:w-auto">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="flex justify-center space-x-6 mt-10">
+                    <a href="https://www.linkedin.com/in/pavithra-mohan-1983a9288" target="_blank" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <!-- Add the link to your GitHub profile here -->
+                    <a href="https://github.com/Pavithra2005Mohan" target="_blank" class="text-gray-400 hover:text-white text-2xl"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6">
+        <div class="container mx-auto px-6 text-center text-gray-400">
+            <p>&copy; 2025 Pavithra Mohan. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- EmailJS and other scripts -->
+    <script type="module">
+        // Initialize EmailJS
+        (function(){
+            emailjs.init({
+                publicKey: "lUBYjDXgwJnqjPa43", // Get this from your EmailJS account
+            });
+        })();
+
+        // Handle Contact Form Submission
+        const contactForm = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const formStatus = document.getElementById('form-status');
+
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            formStatus.textContent = '';
+
+            // These IDs from the previous steps
+            const serviceID = 'service_c8s89ps';
+            const templateID = 'template_h51nkuf';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Send Message';
+                    formStatus.textContent = "Thank you! Your message has been sent successfully.";
+                    formStatus.className = 'mb-4 text-center text-green-400';
+                    contactForm.reset();
+                }, (err) => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Send Message';
+                    formStatus.textContent = "Sorry, something went wrong. Please try again later.";
+                    formStatus.className = 'mb-4 text-center text-red-400';
+                    console.error('EmailJS error:', err);
+                });
+        });
+
+        // Initialize Mobile Menu
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                } else {
+                    reveals[i].classList.remove("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Initial check
+
+        // Typing Animation
+        const typingText = "Computer Science Student & Full-Stack Developer";
+        const subtitleElement = document.getElementById('typing-subtitle');
+        let i = 0;
+
+        function typeWriter() {
+            if (i < typingText.length) {
+                subtitleElement.innerHTML = typingText.substring(0, i + 1) + '<span class="typing-cursor"></span>';
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                subtitleElement.querySelector('.typing-cursor').style.display = 'none';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', (event) => {
+            setTimeout(typeWriter, 500);
+        });
+
+    </script>
+</body>
+</html>
